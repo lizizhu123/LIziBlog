@@ -89,8 +89,8 @@ public class ArticleController {
 
     @ApiOperation("搜索文章")
     @GetMapping("/queryarticle")
-    public ResponseResult queryArticle(String keyword, Integer pageNum,Integer pageSize,Long categoryId){
-        return articleService.getArticleList(keyword,pageNum,pageSize,categoryId);
+    public ResponseResult queryArticle(String keyword, Integer pageNum,Integer pageSize){
+        return articleService.getArticleList(keyword,pageNum,pageSize,0L);
     }
 }
 

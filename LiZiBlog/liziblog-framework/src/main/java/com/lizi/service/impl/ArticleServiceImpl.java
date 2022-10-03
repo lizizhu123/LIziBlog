@@ -133,6 +133,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                 lambdaQueryWrapper.orderByDesc(Article::getCreateTime);
             }
         }
+        if(keyword!=null){
+            lambdaQueryWrapper.like(Article::getContent,keyword);
+        }
         //状态是正式发布的
         lambdaQueryWrapper.eq(Article::getStatus, SystemConstant.ARTICLE_STATUS_NORMAL);
         //只有第一页对IsTop降序排序
