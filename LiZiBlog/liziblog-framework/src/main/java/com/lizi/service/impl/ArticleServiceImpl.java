@@ -112,7 +112,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * 2.分页查询
      */
     @Override
-    public ResponseResult getArticleList(Integer pageNum, Integer pageSize, Long categoryId) {
+    public ResponseResult getArticleList(String keyword, Integer pageNum, Integer pageSize, Long categoryId) {
         //查询条件
         LambdaQueryWrapper<Article> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         //如果 有categoryId查询分类文章
@@ -270,6 +270,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         }
         //我的文章数
         return ResponseResult.okResult(map);
+    }
+
+    @Override
+    public ResponseResult queryArticle(String keyword) {
+        return null;
     }
 
 }

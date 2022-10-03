@@ -10,6 +10,7 @@ import com.lizi.service.ArticleService;
 import com.lizi.utils.Limit;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,7 +60,7 @@ public class ArticleController {
                                       Integer pageSize,
                                        Long categoryId) {
         System.out.println(pageNum+"-"+pageSize+"-"+categoryId);
-        return articleService.getArticleList(pageNum, pageSize, categoryId);
+        return articleService.getArticleList(null, pageNum, pageSize, categoryId);
     }
 
     @ApiOperation("根据id获取文章详情")
@@ -86,5 +87,10 @@ public class ArticleController {
         return articleService.getCreatorInfo();
     }
 
+    @ApiOperation("搜索文章")
+    @GetMapping("/queryarticle")
+    public ResponseResult queryArticle(String keyword, Integer pageNum,Integer pageSize,Long categoryId){
+        return articleService.getArticleList(keyword,pageNum,pageSize,categoryId);
+    }
 }
 

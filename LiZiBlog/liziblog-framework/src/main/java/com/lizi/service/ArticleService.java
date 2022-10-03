@@ -14,7 +14,7 @@ public interface ArticleService extends IService<Article> {
 
     ResponseResult gethotArticleList(Integer pageNum, Integer pageSize);
 
-    ResponseResult getArticleList(Integer pageNum, Integer pageSize, Long categoryId);
+    ResponseResult getArticleList(String keyword, Integer pageNum, Integer pageSize, Long categoryId);
 
     ResponseResult getArticleDetail(Long id);
 
@@ -23,5 +23,7 @@ public interface ArticleService extends IService<Article> {
     ResponseResult addViewCount(Long id,String categoreName);
 
     ResponseResult getCreatorInfo();
+
+    ResponseResult queryArticle(String keyword);
 }
 
