@@ -73,4 +73,9 @@ public class SystemConstant {
      * */
     public static final String SMS_REIDS_KEY="lizi_blog_redis";
 
+    /**
+     * 文章浏览量在redis中的key
+     */
+    public static final String ARTICLE_VIEWCOUNT_REDIS_KEY="viewCount";
+
 }
