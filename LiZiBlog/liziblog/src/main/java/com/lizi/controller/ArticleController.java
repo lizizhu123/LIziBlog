@@ -97,5 +97,12 @@ public class ArticleController {
     public ResponseResult queryArticle(String keyword, Integer pageNum,Integer pageSize){
         return articleService.getArticleList(keyword,pageNum,pageSize,0L);
     }
+
+    @SystemLog(businessName = "增加浏览量")
+    @ApiOperation("增加浏览量")
+    @PutMapping("/updateViewCount/{id}")
+    public ResponseResult updateViewCount(@PathVariable("id") Long id){
+        return articleService.updateViewCount(id);
+    }
 }
 

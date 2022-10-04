@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class TestJob {
     @Scheduled(cron = "0/5 * * * * ?")
     public void testJob(){
-        //TODO
-        System.out.println("定时任务");
+//        //TODO
+//        System.out.println("定时任务");
     }
 }

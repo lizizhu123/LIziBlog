@@ -25,5 +25,7 @@ public interface ArticleService extends IService<Article> {
     ResponseResult getCreatorInfo();
 
     ResponseResult queryArticle(String keyword);
+
+    ResponseResult updateViewCount(Long id);
 }
 
