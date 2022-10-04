@@ -1,5 +1,6 @@
 package com.lizi.controller;
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
 import com.lizi.domain.dto.UserDto;
 import com.lizi.domain.entity.User;
@@ -19,6 +20,7 @@ public class BlogLoginController {
     private BlogLoginService blogLoginService;
 
     @PostMapping("/login")
+    @SystemLog(businessName = "登陆")
     public ResponseResult login(@RequestBody UserDto user){
         if(!StringUtils.hasText(user.getUserName())){
             //提示  必须传入用户名
@@ -28,6 +30,7 @@ public class BlogLoginController {
     }
 
     @ApiOperation("登出")
+    @SystemLog(businessName = "登出")
     @PostMapping("/logout")
     public ResponseResult logout(){
         return blogLoginService.logout();

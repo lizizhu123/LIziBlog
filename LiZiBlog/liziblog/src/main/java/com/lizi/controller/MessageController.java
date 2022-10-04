@@ -1,5 +1,6 @@
 package com.lizi.controller;
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
 import com.lizi.domain.entity.Message;
 import com.lizi.service.MessageService;
@@ -20,12 +21,16 @@ public class MessageController {
 
     @Limit(key = "addMessage", permitsPerSecond = 1, timeout = 500, timeunit = TimeUnit.MILLISECONDS,msg = "当前排队人数较多，请稍后再试！")
     @ApiOperation("发表留言")
+    @SystemLog(businessName = "发表留言")
     @PostMapping("/addmessage")
     public ResponseResult addMessafe(@RequestBody Message message){
         return messageService.addMessage(message);
     }
+
+
     @ApiOperation("获取留言列表")
     @GetMapping("/getmessagelist")
+    @SystemLog(businessName = "获取留言列表")
     public ResponseResult getMessageList(Integer pageNum,Integer pageSize){
         return messageService.getMessageList(pageNum,pageSize);
     }

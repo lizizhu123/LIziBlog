@@ -1,5 +1,6 @@
 package com.lizi.controller;
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.constants.SystemConstant;
 import com.lizi.domain.ResponseResult;
 import com.lizi.domain.dto.UserDto;
@@ -35,12 +36,14 @@ public class UserController {
     private RedisCache redisCache;
 
     @ApiOperation("查询用户信息")
+    @SystemLog(businessName = "查询用户信息")
     @PostMapping("/getUserDetail")
     public ResponseResult getUserDetail(){
         return userService.getUserDetail();
     }
 
     @ApiOperation("查询用户简要信息")
+    @SystemLog(businessName = "查询用户简要信息")
     @GetMapping("/geteasyuser")
     public ResponseResult getUserEasy(Long id){
         return userService.getUserEasy(id);
@@ -48,12 +51,14 @@ public class UserController {
 
 
     @ApiOperation("更新用户信息")
+    @SystemLog(businessName = "更新用户信息")
     @PostMapping("/updateuser")
     public ResponseResult updateUser(@RequestBody User user){
         return userService.updateUser(user);
     }
 
     @ApiOperation("注册用户")
+    @SystemLog(businessName = "注册用户")
     @PostMapping("/register/{code}")
     public ResponseResult register(@RequestBody User user,@PathVariable("code") String code){
         System.out.println("user:"+user);
@@ -61,6 +66,7 @@ public class UserController {
     }
 
     @ApiOperation("发送验证码")
+    @SystemLog(businessName = "发送验证码")
     @PostMapping("/send/{phone}")
     public ResponseResult send(@PathVariable("phone") String phone){
         String code=redisCache.getCacheObject(SystemConstant.SMS_REIDS_KEY+phone);

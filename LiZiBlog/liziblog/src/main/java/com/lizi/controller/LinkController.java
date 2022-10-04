@@ -1,5 +1,6 @@
 package com.lizi.controller;
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
 import com.lizi.service.LinkService;
 import io.swagger.annotations.Api;
@@ -19,6 +20,7 @@ public class LinkController {
 
     @ApiModelProperty("获取所有友链")
     @GetMapping("/getAllLink")
+    @SystemLog(businessName = "获取所有友链")
     public ResponseResult getAllLink(Integer pageNum,Integer pageSize){
     return linkService.getAllLink( pageNum, pageSize);
     }

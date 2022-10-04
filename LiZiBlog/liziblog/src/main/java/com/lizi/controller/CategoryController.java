@@ -1,5 +1,6 @@
 package com.lizi.controller;
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
 import com.lizi.service.CategoryService;
 import io.swagger.annotations.Api;
@@ -19,6 +20,7 @@ public class CategoryController {
 
     @GetMapping("/getCategoryList")
     @ApiOperation("获取标签列表")
+    @SystemLog(businessName = "获取标签列表")
     public ResponseResult getCategory(){
         return categoryService.getCategory();
     }

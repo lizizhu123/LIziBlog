@@ -1,6 +1,7 @@
 package com.lizi.controller;
 
 
+import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
 import com.lizi.service.UploadService;
 import io.swagger.annotations.Api;
@@ -19,6 +20,7 @@ public class UpLoadController {
 
     @ApiOperation("上传头像")
     @PostMapping("/upload")
+    @SystemLog(businessName = "上传头像")
     public ResponseResult uploadImg(MultipartFile img){
         System.out.println("===============>"+img);
         return uploadService.uploadImg(img);
