@@ -27,5 +27,7 @@ public interface ArticleService extends IService<Article> {
     ResponseResult queryArticle(String keyword);
 
     ResponseResult updateViewCount(Long id);
+
+    ResponseResult getMyArticles(Integer pageNum, Integer pageSize);
 }
 

@@ -32,10 +32,6 @@ public class ArticleListVo {
     //缩略图
     @ApiModelProperty(value = "缩略图",example = "http:xxx.com/xxx.jpg")
     private String thumbnail;
-//    //是否置顶（0否，1是）
-//    @ApiModelProperty(value = "是否置顶",example = "1")
-//    private String isTop;
-    //访问量
     @ApiModelProperty(value = "访问量",example = "439")
     private Long viewCount;
 

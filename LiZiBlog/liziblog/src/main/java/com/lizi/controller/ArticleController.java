@@ -104,5 +104,12 @@ public class ArticleController {
     public ResponseResult updateViewCount(@PathVariable("id") Long id){
         return articleService.updateViewCount(id);
     }
+
+    @SystemLog(businessName = "获取个人文章列表")
+    @PostMapping("/myArticles/{pageNum}/{pageSize}")
+    @ApiOperation("获取个人文章列表")
+    public ResponseResult getMyArticles(@PathVariable("pageNum")Integer pageNum,@PathVariable("pageSize") Integer pageSize){
+        return articleService.getMyArticles(pageNum,pageSize);
+    }
 }
 

@@ -1,7 +1,6 @@
 package com.lizi.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -25,8 +24,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * 文章表(Article)表服务实现类
@@ -304,6 +301,22 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //更新redis中的浏览量
         redisCache.incrementCacheMapValue(SystemConstant.ARTICLE_VIEWCOUNT_REDIS_KEY,id.toString(),1);
         return ResponseResult.okResult();
+    }
+
+    @Override
+    public ResponseResult getMyArticles(Integer pageNum, Integer pageSize) {
+        Long id=null;
+        try {
+            id = SecurityUtils.getUserId();
+        } catch (Exception e) {
+            throw new SystemException(AppHttpCodeEnum.NEED_LOGIN);sg_article
+        }
+        LambdaQueryWrapper<Article> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(Article::getCreateBy,id);
+        Page page=new Page(pageNum,pageSize);
+        page(page,lambdaQueryWrapper);
+        List<ArticleListVo> articleListVos = BeanCopyUtil.copyBeanList(page.getRecords(), ArticleListVo.class);
+        return ResponseResult.okResult(new PageVo(articleListVos,page.getTotal()));
     }
 
 }
