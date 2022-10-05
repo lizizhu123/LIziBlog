@@ -78,4 +78,9 @@ public class SystemConstant {
      */
     public static final String ARTICLE_VIEWCOUNT_REDIS_KEY="viewCount";
 
+    /**
+     * 后台登录信息redis  key
+     */
+    public static final String ADMIN_LOGIN_REDIS_KEY="admin_login";
+
 }

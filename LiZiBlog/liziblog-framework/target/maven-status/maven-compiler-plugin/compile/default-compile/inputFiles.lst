@@ -1,4 +1,5 @@
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\mapper\CommentMapper.java
+F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\aspect\LogAspect.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\handler\exception\GlobalExceptionHandler.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\constants\SystemConstant.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\config\WebConfig.java
@@ -47,6 +48,7 @@ F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\service\ArticleServ
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\domain\dto\UserDto.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\domain\vo\NewArticleVo.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\utils\WebUtils.java
+F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\annotation\SystemLog.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\domain\vo\CreatorVo.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\domain\vo\ArticleListVo.java
 F:\lzhGit\LiZiBlog\liziblog-framework\src\main\java\com\lizi\enums\AppHttpCodeEnum.java

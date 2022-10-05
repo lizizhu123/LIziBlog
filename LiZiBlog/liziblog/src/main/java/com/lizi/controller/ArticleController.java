@@ -1,23 +1,15 @@
 package com.lizi.controller;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lizi.annotation.SystemLog;
 import com.lizi.domain.ResponseResult;
-import com.lizi.domain.entity.Article;
-import com.lizi.enums.AppHttpCodeEnum;
-import com.lizi.exception.SystemException;
 import com.lizi.service.ArticleService;
 import com.lizi.utils.Limit;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.io.Serializable;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,7 +31,7 @@ public class ArticleController {
     @GetMapping("/hotArticleList")
     @ApiOperation("首页热门文章")
     @SystemLog(businessName = "首页热门文章")
-    public ResponseResult hotArticleList(Integer pageNum,Integer pageSize) {
+    public ResponseResult hotArticleList(Integer pageNum, Integer pageSize) {
         //查询热门文章 封装成ResponseResult返回
         ResponseResult result = articleService.gethotArticleList(pageNum,pageSize);
         return result;

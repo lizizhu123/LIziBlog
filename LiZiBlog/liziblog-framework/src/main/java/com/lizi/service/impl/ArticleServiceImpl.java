@@ -309,7 +309,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         try {
             id = SecurityUtils.getUserId();
         } catch (Exception e) {
-            throw new SystemException(AppHttpCodeEnum.NEED_LOGIN);sg_article
+            throw new SystemException(AppHttpCodeEnum.NEED_LOGIN);
         }
         LambdaQueryWrapper<Article> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Article::getCreateBy,id);

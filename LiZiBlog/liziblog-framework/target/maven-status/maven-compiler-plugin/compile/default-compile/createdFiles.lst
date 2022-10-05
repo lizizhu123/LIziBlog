@@ -13,6 +13,7 @@ com\lizi\enums\AppHttpCodeEnum.class
 com\lizi\utils\SecurityUtils.class
 com\lizi\handler\AuthenticationEntryPointImpl.class
 com\lizi\config\Knife4jConfiguration.class
+com\lizi\annotation\SystemLog.class
 com\lizi\config\WebConfig.class
 com\lizi\service\impl\UserServiceImpl.class
 com\lizi\domain\entity\Comment.class
@@ -20,6 +21,7 @@ com\lizi\service\UploadService.class
 com\lizi\domain\vo\ArticleListVo.class
 com\lizi\domain\dto\UserDto.class
 com\lizi\domain\vo\LoginUserVo.class
+com\lizi\aspect\LogAspect.class
 com\lizi\domain\vo\LinkVo.class
 com\lizi\mapper\UserMapper.class
 com\lizi\service\impl\ArticleServiceImpl.class
@@ -36,6 +38,7 @@ com\lizi\domain\entity\Link.class
 com\lizi\domain\vo\ArticleDetailVo.class
 com\lizi\domain\vo\PageVo.class
 com\lizi\utils\BeanCopyUtil.class
+com\lizi\service\impl\SendSmsImpl.class
 com\lizi\utils\LimitAop.class
 com\lizi\config\MyBatisPlusConfig.class
 com\lizi\domain\dto\CommentDto.class
@@ -48,6 +51,7 @@ com\lizi\service\LinkService.class
 com\lizi\handler\mybatisplus\MyMetaObjectHandler.class
 com\lizi\service\CategoryService.class
 com\lizi\handler\AccessDeniedHandlerImpl.class
+com\lizi\service\SendSms.class
 com\lizi\service\impl\UserDetailServiceImpl.class
 com\lizi\domain\vo\NewArticleVo.class
 com\lizi\service\BlogLoginService.class

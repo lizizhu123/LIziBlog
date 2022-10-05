@@ -54,8 +54,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="Message" />
-                  <option name="tableName" value="lz_message" />
+                  <option name="className" value="Tag" />
+                  <option name="tableName" value="sg_tag" />
                 </TableUIInfo>
               </list>
             </option>
