@@ -82,5 +82,17 @@ public class SystemConstant {
      * 后台登录信息redis  key
      */
     public static final String ADMIN_LOGIN_REDIS_KEY="admin_login";
+    /**
+     * 后台登录token
+     */
+    public static final String ADMIN_LOGIN_TOKEN="lizi_blog_admin_token";
+    /**
+     * 权限类型为 菜单
+     */
+    public static final String MENU_TYPE_CATEGORY="C";
+    /**
+     * 权限类型为 按钮
+     */
+    public static final String MENU_TYPE_BUTTON="F";
 
 }

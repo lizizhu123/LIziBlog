@@ -54,8 +54,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="Tag" />
-                  <option name="tableName" value="sg_tag" />
+                  <option name="className" value="Role" />
+                  <option name="tableName" value="sys_role" />
                 </TableUIInfo>
               </list>
             </option>

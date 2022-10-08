@@ -8,6 +8,7 @@ import com.lizi.domain.entity.User;
 import com.lizi.enums.AppHttpCodeEnum;
 import com.lizi.service.SendSms;
 import com.lizi.service.UserService;
+import com.lizi.utils.Limit;
 import com.lizi.utils.RedisCache;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -67,6 +68,8 @@ public class UserController {
 
     @ApiOperation("发送验证码")
     @SystemLog(businessName = "发送验证码")
+    @Limit(key = "send", permitsPerSecond = 1, timeout = 500, timeunit = TimeUnit.MILLISECONDS,msg = "操作频繁，请稍后再试！")
+
     @PostMapping("/send/{phone}")
     public ResponseResult send(@PathVariable("phone") String phone){
         String code=redisCache.getCacheObject(SystemConstant.SMS_REIDS_KEY+phone);
@@ -85,5 +88,17 @@ public class UserController {
                 return ResponseResult.errorResult(AppHttpCodeEnum.NO_OPERATOR_AUTH);
             }
         }
+    }
+
+    @ApiOperation("验证码登陆")
+    @PostMapping("/loginsms/{phone}/{code}")
+    @SystemLog(businessName = "验证码登陆")
+    public ResponseResult smsLogin(@PathVariable("phone") String phone,@PathVariable("code")String code){
+        if(code.equals(redisCache.getCacheObject(SystemConstant.SMS_REIDS_KEY+phone))){
+            return userService.smsLogin(phone);
+        }else{
+            return ResponseResult.errorResult(502,"验证码错误");
+        }
+
     }
 }

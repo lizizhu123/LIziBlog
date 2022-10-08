@@ -31,8 +31,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         //获取请求头中的token
-        String token = httpServletRequest.getHeader(SystemConstant.REQUEST_HEADER_TOKEN_KEY);
-        System.out.println("-asdada--sad-----------:"+token);
+        String token = httpServletRequest.getHeader(SystemConstant.ADMIN_LOGIN_TOKEN);
         if(!StringUtils.hasText(token)){
             //如果token为空 说明不需要登陆 直接放行
             filterChain.doFilter(httpServletRequest,httpServletResponse);

@@ -17,4 +17,6 @@ public interface UserService extends IService<User> {
     ResponseResult updateUser(User user);
 
     ResponseResult register(User user,String code);
+
+    ResponseResult smsLogin(String phone);
 }

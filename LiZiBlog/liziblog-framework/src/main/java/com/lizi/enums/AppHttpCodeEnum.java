@@ -20,7 +20,8 @@ public enum AppHttpCodeEnum {
     REQUIRE_PASSWORD(508, "必需填写密码"),
     REQUIRE_NICKNAME(509, "必需填写昵称"),
     REQUIRE_PHONE(510, "必需填写手机号"),
-    ERROR_SMS_CODE(511, "验证码错误");
+    ERROR_SMS_CODE(511, "验证码错误"),
+    PHONE_NOT_REGISTER(512,"手机号未注册");
 
 
     int code;

@@ -16,6 +16,7 @@ import com.lizi.exception.SystemException;
 import com.lizi.service.UserService;
 import com.lizi.mapper.UserMapper;
 import com.lizi.utils.BeanCopyUtil;
+import com.lizi.utils.JwtUtil;
 import com.lizi.utils.RedisCache;
 import com.lizi.utils.SecurityUtils;
 import org.apache.catalina.security.SecurityUtil;
@@ -26,6 +27,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -134,6 +137,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         //存入数据库
         save(user);
         return ResponseResult.okResult();
+    }
+
+    @Override
+    public ResponseResult smsLogin(String phone) {
+        LambdaQueryWrapper<User> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(User::getPhonenumber,phone);
+        User user = getOne(lambdaQueryWrapper);
+        if(user==null){
+            return ResponseResult.errorResult(AppHttpCodeEnum.USERNAME_EXIST.getCode(),"手机号未注册");
+        }
+        LoginUser loginUser=new LoginUser();
+        loginUser.setUser(user);
+        Long userId = loginUser.getUser().getId();
+        String jwt = JwtUtil.createJWT(String.valueOf(userId));
+        //把用户信息存入Redis
+        redisCache.setCacheObject(SystemConstant.BLOG_LOGIN_REDIS_KEY+userId,loginUser);
+        LoginUserVo loginUserVo = BeanCopyUtil.copyBean(loginUser.getUser(), LoginUserVo.class);
+        Map dataMap=new HashMap();
+        dataMap.put("token",jwt);
+        dataMap.put("userInfo",loginUserVo);
+        return ResponseResult.okResult(dataMap);
     }
 
 

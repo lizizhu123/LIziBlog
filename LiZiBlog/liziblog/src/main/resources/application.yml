@@ -7,7 +7,7 @@ spring:
       matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://localhost:3306/mymusicapp?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
+    username: mymusicapp
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: org.apache.commons.dbcp2.BasicDataSource
